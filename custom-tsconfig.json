@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "*": ["src/*"],
+            "__tests__": ["__tests__/*"],
+            "features": ["features/*"],
+            "helpers": ["helpers/*"]
+        }
+    },
+    "include": ["src"]
+}
