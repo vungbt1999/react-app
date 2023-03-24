@@ -3,129 +3,83 @@
 module.exports = {
   content: [
     './src/modules/**/*.{jsx,tsx}',
-    './src/components/**/*.{jsx,tsx}',
+    './src/libraries/**/*.{jsx,tsx}',
     './src/config/**/*.{jsx,tsx}'
   ],
   theme: {
     screens: {
-      sm: "540px",
-      md: "720px",
-      lg: "960px",
-      xl: "1140px",
-      "2xl": "1140px",
+      sm: '540px',
+      md: '720px',
+      lg: '960px',
+      xl: '1280px',
+      '2xl': '1280px'
     },
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "1rem",
-        md: "1rem",
-        lg: "1rem",
-        xl: "1rem",
-        "2xl": "1rem",
+        DEFAULT: '10rem',
+        sm: '10rem',
+        md: '10rem',
+        lg: '10rem',
+        xl: '10rem',
+        '2xl': '10rem'
       },
       screens: {
-        sm: "1140px",
-        md: "1140px",
-        lg: "1140px",
-        xl: "1140px",
-        "2xl": "1140px",
-      },
+        sm: '1280px',
+        md: '1280px',
+        lg: '1280px',
+        xl: '1280px',
+        '2xl': '1280px'
+      }
     },
     fontFamily: {
       primary: 'var(--font-primary)',
-      secondary: 'var(--font-secondary)',
-      tertiary: 'var(--font-tertiary)'
+      secondary: 'var(--font-secondary)'
     },
     colors: {
       // default
       inherit: 'inherit',
       transparent: 'transparent',
       current: 'currentColor',
-      white: '#ffffff',
       black: '#000000',
 
       // theme
       primary: {
         DEFAULT: 'var(--color-primary)',
+        300: 'var(--color-primary-300)',
+        400: 'var(--color-primary-400)',
+        500: 'var(--color-primary-500)'
       },
       secondary: {
         DEFAULT: 'var(--color-secondary)',
-      },
-      gray: {
-        DEFAULT: 'var(--color-gray)',
-        50: 'var(--color-gray-50)',
-        100: 'var(--color-gray-100)',
-        200: 'var(--color-gray-200)',
-        300: 'var(--color-gray-300)',
-        400: 'var(--color-gray-400)',
-        500: 'var(--color-gray-500)',
-        600: 'var(--color-gray-600)',
-        700: 'var(--color-gray-700)',
-        800: 'var(--color-gray-800)',
-        900: 'var(--color-gray-900)'
-      },
-      grey: {
-        DEFAULT: 'var(--color-grey)',
-      },
-      blue: {
-        DEFAULT: 'var(--color-blue)',
-      },
-      indigo: {
-        DEFAULT: 'var(--color-indigo)',
-      },
-      purple: {
-        DEFAULT: 'var(--color-purple)',
-      },
-      pink: {
-        DEFAULT: 'var(--color-pink)',
-      },
-      red: {
-        DEFAULT: 'var(--color-red)',
-      },
-      orange: {
-        DEFAULT: 'var(--color-orange)',
-      },
-      yellow: {
-        DEFAULT: 'var(--color-yellow)',
-      },
-      green: {
-        DEFAULT: 'var(--color-green)',
-      },
-      cyan: {
-        DEFAULT: 'var(--color-cyan)',
-      },
-      teal: {
-        DEFAULT: 'var(--color-teal)',
-      },
-      success: {
-        DEFAULT: 'var(--color-success)',
-      },
-      info: {
-        DEFAULT: 'var(--color-info)',
-      },
-      warning: {
-        DEFAULT: 'var(--color-warning)',
-      },
-      danger: {
-        DEFAULT: 'var(--color-danger)',
+        300: 'var(--color-secondary-300)'
       },
       light: {
         DEFAULT: 'var(--color-light)',
+        300: 'var(--color-light-300)'
       },
       dark: {
         DEFAULT: 'var(--color-dark)',
+        500: 'var(--color-dark-500)',
+        600: 'var(--color-dark-600)'
       },
-      facebook: {
-        DEFAULT: 'var(--color-facebook)',
-      },
-      twitter: {
-        DEFAULT: 'var(--color-twitter)',
-      },
-      linkedin: {
-        DEFAULT: 'var(--color-linkedin)',
-      },
+      gray: {
+        DEFAULT: 'var(--color-gray)',
+        400: 'var(--color-gray-400)'
+      }
+    },
+    extend: {
+      clipPath: {
+        hexagon: 'polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)'
+      }
     }
   },
-  plugins: []
+  plugins: [
+    require('tailwind-clip-path'),
+    require('@tailwindcss/line-clamp'),
+    require('tailwind-scrollbar')
+  ],
+  variants: {
+    scrollbar: ['rounded']
+  }
 };
