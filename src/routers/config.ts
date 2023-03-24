@@ -16,7 +16,7 @@ export const routePath = {
 const configRoutes: IRouter[] = [
   {
     path: routePath.HomePage,
-    element: lazy(() => import('components/layouts')),
+    element: lazy(() => import('libraries/layouts')),
     children: [
       {
         path: routePath.HomePage,

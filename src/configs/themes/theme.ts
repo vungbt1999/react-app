@@ -13,10 +13,11 @@ export const themeConfig: UIConfig = {
       _300: '#8FE9D0'
     },
     light: {
-      default: '#FFFFFF'
+      default: '#FFFFFF',
+      _300: '#FFFFFF'
     },
     dark: {
-      default: '#2E2E2E',
+      default: '#414141',
       _500: '#414141',
       _600: '#2E2E2E'
     },

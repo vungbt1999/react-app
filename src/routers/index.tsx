@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import configRoutes from './config';
 import { Suspense } from 'react';
-import Loading from 'components/loading';
+import Loading from 'libraries/loading';
 import ErrorPage from 'modules/error';
 
 export default function MasterRouter() {
