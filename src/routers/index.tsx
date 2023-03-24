@@ -1,8 +1,8 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import configRoutes from './config';
-import { Suspense } from 'react';
 import Loading from 'libraries/loading';
 import ErrorPage from 'modules/error';
+import { Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import configRoutes from './config';
 
 export default function MasterRouter() {
   return (

@@ -1,384 +1,75 @@
-import BackToTop from 'libraries/components/back-to-top';
 import { Button } from 'libraries/components/button';
-import {
-  CardItemColumnPageProps,
-  CardItemColumnPage,
-  CardDiary,
-  CardDiaryProps,
-  CardItemMyRecord,
-  CardItemMyRecordProps,
-  CardRecommend,
-  CardRecommendProps,
-  CardItemTopPage,
-  CardItemTopPageProps
-} from 'libraries/components/cards-item';
+import { CardItemTopPage } from 'libraries/components/cards-item';
 import CirclePercent from 'libraries/components/circle-percent';
-import ExerciseBoard from 'libraries/components/exercise-board';
 import HexagonItem from 'libraries/components/hexagon-item';
 import MyChart from 'libraries/components/my-chart';
+import { SEO } from 'libraries/seo';
+import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { routePath } from 'routers/config';
+import HomeUtils from './utils';
 
 export default function HomePage() {
   const { t } = useTranslation();
-  const cardsTopPage: CardItemTopPageProps[] = [
-    {
-      tag: '05.21.Morning',
-      image: { url: '/images/d01.jpg' }
-    },
-    {
-      tag: '05.21.Lunch',
-      image: { url: '/images/d02.jpg' }
-    },
-    {
-      tag: '05.21.Dinner',
-      image: { url: '/images/l01.jpg' }
-    },
-    {
-      tag: '05.21.Snack',
-      image: { url: '/images/l02.jpg' }
-    },
-    {
-      tag: '05.21.Morning',
-      image: { url: '/images/l03.jpg' }
-    },
-    {
-      tag: '05.21.Dinner',
-      image: { url: '/images/m01.jpg' }
-    },
-    {
-      tag: '05.21.Snack',
-      image: { url: '/images/m02.jpg' }
-    },
-    {
-      tag: '05.21.Snack',
-      image: { url: '/images/m03.jpg' }
-    }
-  ];
-
-  const cardsRecord: CardItemMyRecordProps[] = [
-    {
-      title: 'BODY RECORD',
-      subtitle: '自分のカラダの記録',
-      image: {
-        url: '/images/MyRecommend-1.jpg'
-      }
-    },
-    {
-      title: 'BODY RECORD',
-      subtitle: '自分のカラダの記録',
-      image: {
-        url: '/images/MyRecommend-2.jpg'
-      }
-    },
-    {
-      title: 'BODY RECORD',
-      subtitle: '自分のカラダの記録',
-      image: {
-        url: '/images/MyRecommend-3.jpg'
-      }
-    }
-  ];
-
-  const cardsColumn: CardItemColumnPageProps[] = [
-    {
-      image: {
-        url: '/images/column-1.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-2.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-3.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-4.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-5.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-6.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    },
-    {
-      image: {
-        url: '/images/column-7.jpg'
-      },
-      time: '2021.05.17   23:25',
-      description:
-        '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ',
-      title: '#魚料理  #和食  #DHA'
-    }
-  ];
-
-  const cardsRecommendColumn: CardRecommendProps[] = [
-    {
-      title: 'RECOMMENDED COLUMN',
-      subtitle: 'オススメ'
-    },
-    {
-      title: 'RECOMMENDED DIET',
-      subtitle: 'ダイエット'
-    },
-    {
-      title: 'RECOMMENDED BEAUTY',
-      subtitle: '美容'
-    },
-    {
-      title: 'RECOMMENDED HEALTH',
-      subtitle: '健康'
-    }
-  ];
-
-  const diaryItems: CardDiaryProps[] = [
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    },
-    {
-      date: '2021.05.21',
-      time: '23:25',
-      title: '私の日記の記録が一部表示されます。',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…'
-    }
-  ];
+  const navigate = useNavigate();
+  const { homeData, chartData } = HomeUtils();
 
   return (
-    <div className="container">
-      <HexagonItem iconName="knife" title="morning" />
+    <Fragment>
+      <SEO title="Home Page" />
+      {/** RED + GREEN COLUMN */}
+      <div className="grid items-center w-full grid-cols-14">
+        {/** Red column :Date-Achievement rate */}
+        <div className="col-span-6 relative">
+          <img
+            src="/images/d01.jpg"
+            alt="bg-circle-process"
+            className="w-full h-auto max-h-[312px] object-cover"
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <CirclePercent
+              number1={81}
+              number2={150}
+              className="w-[181px] h-[181px] aspect-square"
+            />
+          </div>
+        </div>
 
-      <HexagonItem iconName="cup" title="Dinner" />
-
-      <Button onClick={() => alert('')} title={t('see_more_record')} />
-      <BackToTop />
-      <div className="grid grid-cols-4 gap-2">
-        {cardsTopPage.map((item, index) => {
-          return <CardItemTopPage key={index} {...item} className="col-span-1" />;
-        })}
-      </div>
-      <div className="grid grid-cols-3 gap-12">
-        {cardsRecord.map((item, index) => {
-          return <CardItemMyRecord {...item} key={index} className="col-span-1" />;
-        })}
-      </div>
-
-      <div className="grid grid-cols-4 gap-x-2 gap-y-[18px]">
-        {cardsColumn.map((item, index) => {
-          return <CardItemColumnPage {...item} key={index} className="col-span-1" />;
-        })}
-      </div>
-
-      <div className="grid grid-cols-4 gap-8">
-        {cardsRecommendColumn.map((item, index) => {
-          return <CardRecommend {...item} key={index} className="col-span-1" />;
-        })}
-      </div>
-
-      <div className="grid grid-cols-4 gap-3">
-        {diaryItems.map((item, index) => {
-          return <CardDiary {...item} key={index} className="col-span-1" />;
-        })}
+        {/** Green column: Body weight - Body fat percentage graph */}
+        {chartData && (
+          <div className="col-span-8 w-full h-[312px]">
+            <MyChart
+              chartData={chartData['year'].data}
+              activeType="year"
+              className="h-full"
+              classNameChart="mx-auto h-full max-w-[589px] !w-full"
+            />
+          </div>
+        )}
       </div>
 
-      <div className="bg-black">
-        <CirclePercent number1={17} number2={21} />
+      {/** BLUE COLUMN: Button to transit to input */}
+      <div className="container">
+        <div className="flex py-6 lg:gap-16 justify-center">
+          {homeData.blue.map((item, index) => {
+            return <HexagonItem key={index} {...item} />;
+          })}
+        </div>
       </div>
 
-      <div>
-        <MyChart date="2021.05.21" isShowButton={true} />
-        <MyChart />
+      {/** Yellow COLUMN: Meal history */}
+      <div className="container">
+        <div className="grid grid-cols-4 gap-2">
+          {homeData.yellow.map((item, index) => {
+            return <CardItemTopPage key={index} {...item} className="col-span-1" />;
+          })}
+        </div>
       </div>
 
-      <div>
-        <ExerciseBoard
-          date="2021.05.21"
-          items={[
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            },
-            {
-              title: '家事全般（立位・軽い）',
-              kcal: 26,
-              minute: 10
-            }
-          ]}
-        />
+      <div className="text-center pb-16 pt-7">
+        <Button onClick={() => navigate(routePath.MyRecord)}>{t('see_more_record')}</Button>
       </div>
-    </div>
+    </Fragment>
   );
 }

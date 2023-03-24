@@ -1,44 +1,36 @@
-import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
+import BackToTop from 'libraries/components/back-to-top';
+import { Fragment, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import ApiUtils from 'utils/api/api.utils';
 import FooterLayout, { FooterLayoutProps } from './footer';
 import HeaderLayout, { HeaderLayoutProps } from './header';
 
+export type MainLayoutProps = { header: HeaderLayoutProps; footer: FooterLayoutProps };
 export default function MainLayout() {
-  const { t } = useTranslation();
-  const header: HeaderLayoutProps = {
-    navigates: [
-      { icon: 'memo', title: t('my_memo'), url: '/#' },
-      { icon: 'challenge', title: t('challenge'), url: '/#' },
-      { icon: 'info', title: t('info'), url: '/#' }
-    ],
-    menuBars: [
-      { title: t('my_memo'), url: '/#' },
-      { title: t('weight_graph'), url: '/#' },
-      { title: t('the_goal'), url: '/#' },
-      { title: t('selected_course'), url: '/#' },
-      { title: t('column_list'), url: '/#' },
-      { title: t('setting'), url: '/#' }
-    ]
-  };
-  const footer: FooterLayoutProps = {
-    navigates: [
-      { title: t('member_registration'), url: '/#' },
-      { title: t('operating_company'), url: '/#' },
-      { title: t('term_of_service'), url: '/#' },
-      { title: t('personal_info'), url: '/#' },
-      { title: t('commercial_transaction'), url: '/#' },
-      { title: t('inquiry'), url: '/#' }
-    ]
+  const [loading, setLoading] = useState<boolean>(false);
+  const [layoutData, setLayoutData] = useState<MainLayoutProps>();
+
+  useEffect(() => {
+    fetchingLayout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchingLayout = async () => {
+    if (loading) return;
+    setLoading(true);
+    const res: MainLayoutProps = await ApiUtils.get('/layout');
+    setLayoutData(res);
+    setLoading(false);
   };
 
   return (
     <Fragment>
-      <HeaderLayout {...header} />
-      <div className="pt-16">
+      {layoutData?.header && <HeaderLayout {...layoutData?.header} />}
+      <div className="hight-content pt-16">
         <Outlet />
+        <BackToTop />
       </div>
-      <FooterLayout {...footer} />
+      {layoutData?.footer && <FooterLayout {...layoutData.footer} />}
     </Fragment>
   );
 }

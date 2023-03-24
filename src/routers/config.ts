@@ -10,7 +10,8 @@ export interface IRouter {
 export const routePath = {
   HomePage: '/',
   MyRecord: '/my-record',
-  Column: '/column'
+  Column: '/column',
+  HashTag: '#'
 };
 
 const configRoutes: IRouter[] = [

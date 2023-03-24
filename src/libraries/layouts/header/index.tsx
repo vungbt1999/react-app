@@ -15,7 +15,7 @@ export default function HeaderLayout({ navigates, menuBars }: HeaderLayoutProps)
   const inputRef = useRef(null);
   useOnClickOutside(ref, () => {
     const inputCheckbox: any = inputRef.current;
-    if (inputCheckbox && inputCheckbox.checked) return (inputCheckbox.checked = false);
+    if (inputCheckbox && inputCheckbox.checked === true) return (inputCheckbox.checked = false);
   });
 
   return (
@@ -27,7 +27,7 @@ export default function HeaderLayout({ navigates, menuBars }: HeaderLayoutProps)
 
         {/** Nav List */}
         <nav className="flex items-center">
-          <ul className="flex items-center gap-8">
+          <ul className="hidden xl:flex items-center gap-8">
             {navigates.map((item, index) => {
               return <NavItem key={index} iconName={item.icon} title={item.title} url={item.url} />;
             })}

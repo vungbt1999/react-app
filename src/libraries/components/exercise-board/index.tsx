@@ -26,7 +26,7 @@ export default function ExerciseBoard({ title, date, items }: ExerciseBoardProps
       </div>
 
       {/** Exercise List */}
-      <div className="mt-1 max-h-[192px] overflow-y-auto grid grid-cols-2 gap-x-10 gap-y-2 pb-2 scrollbar-track-gray-400 scrollbar-thumb-primary-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+      <div className="mt-1 max-h-[192px] overflow-y-auto grid grid-cols-2 gap-x-10 gap-y-2 pb-2 scrollbar scrollbar-w-[6px] scrollbar-track-gray-400 scrollbar-thumb-primary-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full pr-6">
         {items.map((item, index) => {
           return (
             <div

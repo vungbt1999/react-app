@@ -1,28 +1,43 @@
-import { Line } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'chart.js';
-import { ButtonChartType } from 'types/common';
+import clsx from 'clsx';
 import { ButtonChart } from 'libraries/components/button';
+import { Line } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
+import { ButtonChartType } from 'types/common';
 
 export type MyChartProps = {
   date?: string;
   title?: string;
+  activeType: ButtonChartType;
   isShowButton?: boolean;
+  onChangeTime?: (value: ButtonChartType) => void;
+  className?: string;
+  classNameChart?: string;
+  chartData: any;
 };
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-export default function MyChart({ date, title, isShowButton = false }: MyChartProps) {
+export default function MyChart({
+  date,
+  title,
+  activeType,
+  isShowButton,
+  className,
+  classNameChart,
+  chartData,
+  onChangeTime
+}: MyChartProps) {
   const { t } = useTranslation();
-
+  const buttons: ButtonChartType[] = ['day', 'month', 'week', 'year'];
   const options = {
     responsive: true,
     plugins: {
@@ -53,43 +68,8 @@ export default function MyChart({ date, title, isShowButton = false }: MyChartPr
     }
   };
 
-  const labels = [
-    '6月',
-    '7月',
-    '8月',
-    '9月',
-    '10月',
-    '11月',
-    '12月',
-    '1月',
-    '2月',
-    '3月',
-    '4月',
-    '5月'
-  ];
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => Math.floor(Math.random() * 1000) + -1000),
-        borderColor: '#FFCC21',
-        backgroundColor: '#FFCC21'
-      },
-      {
-        label: 'Dataset 2',
-        data: labels.map(() => Math.floor(Math.random() * 1000) + -1000),
-        borderColor: '#8FE9D0',
-        backgroundColor: '#8FE9D0'
-      }
-    ]
-  };
-
-  const buttons: ButtonChartType[] = ['day', 'month', 'week', 'year'];
-
   return (
-    <div className="bg-dark-500 py-4 px-8">
+    <div className={clsx('bg-dark-500 py-4 px-8', className)}>
       {date && (
         <div className="flex items-start mb-1">
           <p className="font-secondary text-light text-[15px] leading-[18px] tracking-[0.15px] uppercase max-w-[96px]">
@@ -100,11 +80,18 @@ export default function MyChart({ date, title, isShowButton = false }: MyChartPr
           </p>
         </div>
       )}
-      <Line options={options} data={data} />
+      <Line options={options} data={chartData} className={classNameChart} />
       {isShowButton && (
         <div className="flex items-center gap-4 mt-2">
           {buttons.map((item) => {
-            return <ButtonChart key={item} type={item} onClick={(value) => alert(value)} />;
+            return (
+              <ButtonChart
+                key={item}
+                type={item}
+                active={activeType === item}
+                onClick={(value) => onChangeTime && onChangeTime(value)}
+              />
+            );
           })}
         </div>
       )}

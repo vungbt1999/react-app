@@ -14,9 +14,10 @@ export function ButtonChart({ type, active = false, onClick }: ButtonChartProps)
     <button
       onClick={() => onClick(type)}
       className={clsx(
-        'bg-light rounded-[11px] px-5 pb-[2px] text-[15px] leading-[22px] font-light text-primary-300 tracking-[0.075px] outline-none hover:bg-primary-300 hover:text-light transition-all hover:opacity-90',
+        'bg-light rounded-[11px] px-5 pb-[2px] text-[15px] leading-[22px] font-light tracking-[0.075px] outline-none hover:bg-primary-300 hover:text-light transition-all hover:opacity-90',
         {
-          'bg-primary-300 text-light': active
+          'bg-primary-300 text-light': active,
+          'text-primary-300': !active
         }
       )}
     >

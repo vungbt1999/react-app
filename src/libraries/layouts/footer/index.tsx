@@ -6,6 +6,7 @@ export type FooterLayoutProps = {
     url: string;
   }[];
 };
+
 export default function FooterLayout({ navigates }: FooterLayoutProps) {
   return (
     <div className="bg-dark-500 py-14">

@@ -18,16 +18,16 @@ module.exports = {
       center: true,
       padding: {
         DEFAULT: '10rem',
-        sm: '10rem',
-        md: '10rem',
-        lg: '10rem',
+        sm: '5rem',
+        md: '5rem',
+        lg: '5rem',
         xl: '10rem',
         '2xl': '10rem'
       },
       screens: {
-        sm: '1280px',
-        md: '1280px',
-        lg: '1280px',
+        sm: '540px',
+        md: '720px',
+        lg: '960px',
         xl: '1280px',
         '2xl': '1280px'
       }
@@ -71,13 +71,16 @@ module.exports = {
     extend: {
       clipPath: {
         hexagon: 'polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)'
+      },
+      gridTemplateColumns: {
+        '14': 'repeat(14, minmax(0, 1fr))',
       }
     }
   },
   plugins: [
     require('tailwind-clip-path'),
     require('@tailwindcss/line-clamp'),
-    require('tailwind-scrollbar')
+    require('tailwind-scrollbar')({ nocompatible: true })
   ],
   variants: {
     scrollbar: ['rounded']
