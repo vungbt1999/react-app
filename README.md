@@ -1,45 +1,62 @@
-# Start
-1. Min Nodejs v12
+## Running the app
+```bash
+1. Min Nodejs v16.13.1
 2. npm install or yarn
 3. npm run start or yarn start
+```
 
-# Script more
+## More script
+```bash
 1. npm run format or yarn format ( format source code )
 2. npm run build or yarn build ( build project )
+```
 
-# Technology
-1. React 17
-2. React router 6
-3. React i18next 11
-4. Antd 4
-5. Socket IO 4
-6. node-sass 7
-7. Redux toolkit 1
+## Technology
+```bash
+1. React v18
+2. React router v6
+3. React i18next v12
+4. React Chartjs 2
+5. Tailwind CSS v3
+6. msw ( Mock Service Worker )
+```
 
-# Source base
+## Source base
 ```bash
 public
 src
- - assets
-    - icons
-    - locale
+   # mock api
+ - @mock-api
+      - data
+   # app config
+ - configs
+      - locales
+      - themes
  - constants
+   # custom hook in app
  - hooks
-    - redux
-    - rxjs
-    - socket-io
+   # ui component apply for all app
  - libraries
-    - components
-    - form
-    - layouts
- - middlewares
+      - components
+      - icons
+      - layouts
+      - loading
+      - logo
+      - seo
+   # ui and handle page
  - modules
- - routing
+      - 404
+      - column
+      - error
+      - home
+      - my-record
+   # router config
+ - routers
+   # styling css
  - styles
  - utils
-    - api
-    - auth
+      - api
 ```
-# State management
-1. Redux toolkit used management state of app ( RootState )
-2. All state saved in folder ( src/hooks/redux )
+
+## License
+Git repo [vungbt/heathy-app](https://github.com/vungbt1999/react-app).
